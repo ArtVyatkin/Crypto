@@ -1,4 +1,4 @@
-from des.utils.string_processing import chunk_str
+from src.des.utils.string_processing import chunk_str
 
 
 def number_to_binary_str(number, length=8):

@@ -1,11 +1,11 @@
 from typing import Tuple
 import re
 
-from des.utils.encodings_processing import add_parity_bits, xor_string, number_to_binary_str, to_binary, from_binary, \
+from src.des.utils.encodings_processing import add_parity_bits, xor_string, number_to_binary_str, to_binary, from_binary, \
     hex_to_binary, binary_to_hex, get_hex_to_display
-from des.utils.feistel_cipher import feistel_encrypt, feistel_decrypt
-from des.utils.string_processing import shift_string, chunk_str, pad_string_to_multiple_of_length
-from des.config import (
+from src.des.utils.feistel_cipher import feistel_encrypt, feistel_decrypt
+from src.des.utils.string_processing import shift_string, chunk_str, pad_string_to_multiple_of_length
+from src.des.config import (
     APPENDED_LETTER,
     IP_PERMUTATION,
     EXTENSION_TABLE,
