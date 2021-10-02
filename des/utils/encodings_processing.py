@@ -28,3 +28,15 @@ def add_parity_bits(binary_string, calculate_bit=lambda last_bits: "0"):
         chunk = binary_string[i: i + 7]
         result += binary_string[i: i + 7] + calculate_bit(chunk)
     return ''.join(result)
+
+
+def binary_to_hex(binary_str):
+    return f"{int(binary_str, 2):0{len(binary_str) // 4}x}"
+
+
+def hex_to_binary(hex_str):
+    return f"{int(hex_str, 16):0{len(hex_str) * 4}b}"
+
+
+def get_hex_to_display(hex_str):
+    return " ".join([chunk.upper() for chunk in chunk_str(hex_str, 2)])
