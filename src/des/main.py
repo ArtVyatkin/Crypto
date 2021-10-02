@@ -1,7 +1,9 @@
 from typing import Tuple
+from collections import Counter
 import re
 
-from src.des.utils.encodings_processing import add_parity_bits, xor_string, number_to_binary_str, to_binary, from_binary, \
+from src.des.utils.encodings_processing import add_parity_bits, xor_string, number_to_binary_str, to_binary, \
+    from_binary, \
     hex_to_binary, binary_to_hex, get_hex_to_display
 from src.des.utils.feistel_cipher import feistel_encrypt, feistel_decrypt
 from src.des.utils.string_processing import shift_string, chunk_str, pad_string_to_multiple_of_length
@@ -24,9 +26,16 @@ def permute(string, permutation: Tuple, bias=-1):
     return "".join([string[i + bias] for i in permutation])
 
 
+def get_parity_bit(chunk):
+    counter = Counter()
+    counter.update(list(chunk))
+    new_symbol = str(1 - counter['1'] % 2)
+    return new_symbol
+
+
 def get_round_keys(binary_key, initial_key_permutation, round_keys_shifts, final_key_permutation):
     round_keys = []
-    key_with_parity_bits = add_parity_bits(binary_key)
+    key_with_parity_bits = add_parity_bits(binary_key, get_parity_bit)
     print(f"!!!!!! cur 64-bit key -> {binary_to_hex(key_with_parity_bits)}")
     permuted_key = permute(key_with_parity_bits, initial_key_permutation, -1)
 
