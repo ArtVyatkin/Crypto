@@ -28,5 +28,4 @@ def pad_string_to_multiple_of_length(string, divider_number, appended_letter):
     number_of_last_letters = len(string) % divider_number
     if number_of_last_letters != 0:
         string += appended_letter * (divider_number - number_of_last_letters)
-    print(f"!!!!!! input string in hex -> {binary_to_hex(to_binary(string))}")
     return string

@@ -36,7 +36,6 @@ def get_parity_bit(chunk):
 def get_round_keys(binary_key, initial_key_permutation, round_keys_shifts, final_key_permutation):
     round_keys = []
     key_with_parity_bits = add_parity_bits(binary_key, get_parity_bit)
-    print(f"!!!!!! cur 64-bit key -> {binary_to_hex(key_with_parity_bits)}")
     permuted_key = permute(key_with_parity_bits, initial_key_permutation, -1)
 
     center_index = len(permuted_key) // 2
@@ -115,12 +114,12 @@ if __name__ == "__main__":
     ascii_string = input()
     print("Enter a key in HEX format with exactly 14 characters:")
     cur_hex_key = input_hex(14)
-    print(f"Hex key: '{get_hex_to_display(cur_hex_key)}'")
+    print(f"HEX key: '{get_hex_to_display(cur_hex_key)}'")
     encrypted_string = des_encrypt(ascii_string, cur_hex_key)
 
-    print(f"Encrypted string in hex: '{get_hex_to_display(encrypted_string)}'")
+    print(f"Encrypted string in HEX: '{get_hex_to_display(encrypted_string)}'")
     print(f"String after decryption: '{des_decrypt(encrypted_string, cur_hex_key)}'")
 
 # Examples:
 #   ac 43 d5 e3 ba f1 8e
-#   Hello, how do you do, man?
+#   What's up guys?
