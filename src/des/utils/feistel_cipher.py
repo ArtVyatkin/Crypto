@@ -1,4 +1,4 @@
-from src.des.utils.encodings_processing import xor_string
+from src.utils.encodings_processing import xor_string
 
 
 def feistel_encrypt(binary_string, keys, encryption_func):

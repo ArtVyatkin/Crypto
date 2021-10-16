@@ -1,4 +1,4 @@
-from src.des.utils.string_processing import chunk_str
+from src.utils.strinig_processing import chunk_str
 
 
 def number_to_binary_str(number, length=8):
@@ -11,8 +11,11 @@ def to_binary(text):
 
 def from_binary(binary_text, appended_letter=None):
     return "".join(
-        [chr(int(chunk, 2)) for chunk in chunk_str(binary_text, 8) if
-         appended_letter is None or chunk != number_to_binary_str(ord(appended_letter))]
+        [
+            chr(int(chunk, 2))
+            for chunk in chunk_str(binary_text, 8)
+            if appended_letter is None or chunk != number_to_binary_str(ord(appended_letter))
+        ]
     )
 
 
@@ -25,9 +28,9 @@ def xor_string(first_str, second_str):
 def add_parity_bits(binary_string, calculate_bit=lambda last_bits: "0"):
     result = []
     for i in range(0, len(binary_string), 7):
-        chunk = binary_string[i: i + 7]
-        result += binary_string[i: i + 7] + calculate_bit(chunk)
-    return ''.join(result)
+        chunk = binary_string[i : i + 7]
+        result += binary_string[i : i + 7] + calculate_bit(chunk)
+    return "".join(result)
 
 
 def binary_to_hex(binary_str):
@@ -35,8 +38,5 @@ def binary_to_hex(binary_str):
 
 
 def hex_to_binary(hex_str):
+    hex_str = hex_str.replace(" ", "")
     return f"{int(hex_str, 16):0{len(hex_str) * 4}b}"
-
-
-def get_hex_to_display(hex_str):
-    return " ".join([chunk.upper() for chunk in chunk_str(hex_str, 2)])
