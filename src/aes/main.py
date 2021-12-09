@@ -26,7 +26,7 @@ def hex_text_to_numbers(hex_text):
 
 def table_from_text(hex_text, n_bytes_in_word, n_bytes_in_block):
     hex_text_as_numbers = hex_text_to_numbers(hex_text)
-    return [hex_text_as_numbers[i: n_bytes_in_word + i] for i in range(0, n_bytes_in_block, n_bytes_in_word)]
+    return [hex_text_as_numbers[i : n_bytes_in_word + i] for i in range(0, n_bytes_in_block, n_bytes_in_word)]
 
 
 def shift(input_list, shift_value, is_left_shift=True):
@@ -59,7 +59,7 @@ def add_round_key(state, key_schedule, round_number, n_words_in_bock):
     return [
         xor_words(state_word, key_word)
         for state_word, key_word in zip(
-            state, key_schedule[round_number * n_words_in_bock: (round_number + 1) * n_words_in_bock]
+            state, key_schedule[round_number * n_words_in_bock : (round_number + 1) * n_words_in_bock]
         )
     ]
 
@@ -102,7 +102,7 @@ def chunk_hex_str(hex_str, bytes_in_chunk, appended_hex=None):
         number_of_last_bytes = len(hex_as_list) % bytes_in_chunk
         if number_of_last_bytes != 0:
             hex_as_list += [appended_hex] * (bytes_in_chunk - number_of_last_bytes)
-    return [" ".join(hex_as_list[i: i + bytes_in_chunk]) for i in range(0, len(hex_as_list), bytes_in_chunk)]
+    return [" ".join(hex_as_list[i : i + bytes_in_chunk]) for i in range(0, len(hex_as_list), bytes_in_chunk)]
 
 
 def remove_last_appended_bytes(hex_text, appended_bytes):
