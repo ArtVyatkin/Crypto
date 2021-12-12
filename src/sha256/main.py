@@ -20,7 +20,7 @@ def int2ba(number, length=WORD_LENGTH):
 
 
 def chunk_str(input_str_, symbols_in_chunk):
-    return [input_str_[i: i + symbols_in_chunk] for i in range(0, len(input_str_), symbols_in_chunk)]
+    return [input_str_[i : i + symbols_in_chunk] for i in range(0, len(input_str_), symbols_in_chunk)]
 
 
 def right_shift(input_bitarray, shift_value):
